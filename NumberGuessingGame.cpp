@@ -5,17 +5,17 @@ using namespace std;
 
 int main()
 {
-	cout << "Welcome to the Number Guessing Game!" << endl;
+	cout << "Welcome to the Number Guessing Game!" << endl; //welcome note and instructions
   cout << "Guess a number between 1 and 100." << endl;
 	cout << "Good Luck!" <<endl;
 	
 	int num, guess, tries = 0;
-	srand(time(0)); //to generate random number
-	num = rand() % 100 + 1; // random number lies between 1 and 100
+	srand(time(0)); //generate random number
+	num = rand() % 100 + 1; //the number lies between 1 and 100
 
 	do
 	{
-		cout << "Enter your guess:";
+		cout << "Enter your guess:"; //prompt the user for input
 		cin >> guess;
 		tries++;
 
