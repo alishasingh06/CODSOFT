@@ -1,2 +1,6 @@
 # CODSOFT
-This repository is made to upload all the tasks done under the Tech Internship done at CodSoft.
+This repository is made to upload all the tasks done under the Programming Internship done at CodSoft.
+It contains the following programs:
+1. 
+2. 
+3. 
