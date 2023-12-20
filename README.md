@@ -4,5 +4,5 @@ It contains the following programs:
 1. GUESS THE NUMBER Game
 2. SIMPLE CALCULATOR
 3. TIC-TAC-TOE Game
-4. To-Do List manager
+4. TO-DO LIST manager
 5. 
