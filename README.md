@@ -5,4 +5,3 @@ It contains the following programs:
 2. SIMPLE CALCULATOR
 3. TIC-TAC-TOE Game
 4. TO-DO LIST manager
-5. 
