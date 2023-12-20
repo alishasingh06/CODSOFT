@@ -3,9 +3,11 @@
 using namespace std;
 
 int choice;
+char option;
 int row,column;
 char turn = 'X';
 bool draw = false;
+
 //array for the board with position number
 char board[3][3] = {{'1','2','3'},{'4','5','6'},{'7','8','9'}};
 
@@ -90,13 +92,12 @@ void player_turn(){ //to get player input and update the board
     display_board();
 }
 
-
 bool gameover(){ //to get game status
     for(int i=0; i<3; i++)
-    if(board[i][0] == board[i][1] && board[i][0] == board[i][2] || board[0][i] == board[1][i] && board[0][i] == board[2][i])
+    if((board[i][0] == board[i][1] && board[i][0] == board[i][2]) || (board[0][i] == board[1][i] && board[0][i] == board[2][i]))
     return false; //checking the win for rows and columns
 
-    if(board[0][0]==board[1][1] && board[0][0]==board[2][2] || board[0][2]==board[1][1] && board[0][2]==board[2][0])
+    if((board[0][0]==board[1][1] && board[0][0]==board[2][2]) || (board[0][2]==board[1][1] && board[0][2]==board[2][0]))
     return false; //checking the win for both diagonals
 
     for(int i=0; i<3; i++)
@@ -109,22 +110,51 @@ bool gameover(){ //to get game status
     return false; //checking if the game already draw
 }
 
+void askPlayAgain() { //asking user to play again
+    cout << "Do you want to play again? (Y/N)" << endl;
+    cin >> option;
+
+    while (option != 'Y' && option != 'y' && option != 'N' && option != 'n') {
+        cout << "Invalid input! Enter again." << endl;
+        cin >> option;
+    }
+}
+
 int main()
 {
-    cout << "Welcome to the TIC-TAC-TOE game!" << endl;
+    cout << "Welcome to the TIC-TAC-TOE game!" << endl; //starting game
     cout << "For 2 players: PLAYER 1 [X] - PLAYER 2 [O]\n" << endl;
 
-    while(gameover()){
-        display_board();
-        player_turn();
-        gameover();
+    while (true) {
+        while (gameover()) {
+            display_board();
+            player_turn();
+            gameover();
+        }
+
+        if (turn == 'X' && draw == false) {
+            cout << "Congratulations! Player 1 has won." << endl;
+        }
+        else if (turn == 'O' && draw == false) {
+            cout << "Congratulations! Player 2 has won." << endl;
+        }
+        else {
+            cout << "Oops! It's a draw." << endl;
+        } //displaying game result
+
+    askPlayAgain();
+
+    if (option=='Y' || option=='y') { //reset game if playing again
+        for (int i=0 ; i<3 ; i++) {
+            for (int j=0 ; j<3; j++) {
+                board[i][j] = (i*3 + j + 1) + '0'; //reset board to position numbers
+            }
+        }
+        turn = 'X'; //reset turn to player 1
     }
-    if(turn == 'X' && draw == false){
-        cout << "Congratulations! Player 1 has won." << endl;
+    else {
+        break; //exit the game loop
     }
-    else if(turn == 'O' && draw == false){
-        cout << "Congratulations! Player 2 has won." << endl;
-    }
-    else
-    cout << "Oops! It's a draw." << endl;
+  }
+  return 0;
 }
